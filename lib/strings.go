@@ -1,19 +1,6 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// Copyright (c) 2023 Sedara, LLC. - All Rights Reserved.
+// Unauthorized copying of this file, via any medium is strictly prohibited
+// Unless specifically stated otherwise, all work is proprietary and confidential
 
 package lib
 
@@ -187,15 +174,15 @@ func (stringLib) CompileOptions() []cel.EnvOption {
 				),
 			),
 		),
-		cel.Declarations(
-			decls.NewFunction("join",
-				decls.NewInstanceOverload(
-					"list_string_join_string_string",
-					[]*expr.Type{listString, decls.String},
-					decls.String,
-				),
-			),
-		),
+		// cel.Declarations(
+		// 	decls.NewFunction("join",
+		// 		decls.NewInstanceOverload(
+		// 			"list_string_join_string_string",
+		// 			[]*expr.Type{listString, decls.String},
+		// 			decls.String,
+		// 		),
+		// 	),
+		// ),
 		cel.Declarations(
 			decls.NewFunction("last_index",
 				decls.NewInstanceOverload(
@@ -223,15 +210,15 @@ func (stringLib) CompileOptions() []cel.EnvOption {
 				),
 			),
 		),
-		cel.Declarations(
-			decls.NewFunction("replace",
-				decls.NewInstanceOverload(
-					"string_replace_string_string_int_string",
-					[]*expr.Type{decls.String, decls.String, decls.String, decls.Int},
-					decls.String,
-				),
-			),
-		),
+		// cel.Declarations(
+		// 	decls.NewFunction("replace",
+		// 		decls.NewInstanceOverload(
+		// 			"string_replace_string_string_int_string",
+		// 			[]*expr.Type{decls.String, decls.String, decls.String, decls.Int},
+		// 			decls.String,
+		// 		),
+		// 	),
+		// ),
 		cel.Declarations(
 			decls.NewFunction("replace_all",
 				decls.NewInstanceOverload(
@@ -241,15 +228,15 @@ func (stringLib) CompileOptions() []cel.EnvOption {
 				),
 			),
 		),
-		cel.Declarations(
-			decls.NewFunction("split",
-				decls.NewInstanceOverload(
-					"string_split_string_list_string",
-					[]*expr.Type{decls.String, decls.String},
-					listString,
-				),
-			),
-		),
+		// cel.Declarations(
+		// 	decls.NewFunction("split",
+		// 		decls.NewInstanceOverload(
+		// 			"string_split_string_list_string",
+		// 			[]*expr.Type{decls.String, decls.String},
+		// 			listString,
+		// 		),
+		// 	),
+		// ),
 		cel.Declarations(
 			decls.NewFunction("split_after",
 				decls.NewInstanceOverload(
@@ -277,15 +264,15 @@ func (stringLib) CompileOptions() []cel.EnvOption {
 				),
 			),
 		),
-		cel.Declarations(
-			decls.NewFunction("substring",
-				decls.NewInstanceOverload(
-					"string_substring_int_int_string",
-					[]*expr.Type{decls.String, decls.Int, decls.Int},
-					decls.String,
-				),
-			),
-		),
+		// cel.Declarations(
+		// 	decls.NewFunction("substring",
+		// 		decls.NewInstanceOverload(
+		// 			"string_substring_int_int_string",
+		// 			[]*expr.Type{decls.String, decls.Int, decls.Int},
+		// 			decls.String,
+		// 		),
+		// 	),
+		// ),
 		cel.Declarations(
 			decls.NewFunction("to_lower",
 				decls.NewInstanceOverload(
@@ -450,12 +437,12 @@ func (l stringLib) ProgramOptions() []cel.ProgramOption {
 				Binary:   l.indexAny,
 			},
 		),
-		cel.Functions(
-			&functions.Overload{
-				Operator: "list_string_join_string_string",
-				Binary:   l.join,
-			},
-		),
+		// cel.Functions(
+		// 	&functions.Overload{
+		// 		Operator: "list_string_join_string_string",
+		// 		Binary:   l.join,
+		// 	},
+		// ),
 		cel.Functions(
 			&functions.Overload{
 				Operator: "string_last_index_string_int",
@@ -474,24 +461,24 @@ func (l stringLib) ProgramOptions() []cel.ProgramOption {
 				Binary:   l.repeat,
 			},
 		),
-		cel.Functions(
-			&functions.Overload{
-				Operator: "string_replace_string_string_int_string",
-				Function: l.replace,
-			},
-		),
+		// cel.Functions(
+		// 	&functions.Overload{
+		// 		Operator: "string_replace_string_string_int_string",
+		// 		Function: l.replace,
+		// 	},
+		// ),
 		cel.Functions(
 			&functions.Overload{
 				Operator: "string_replace_all_string_string_string",
 				Function: l.replaceAll,
 			},
 		),
-		cel.Functions(
-			&functions.Overload{
-				Operator: "string_split_string_list_string",
-				Binary:   l.split,
-			},
-		),
+		// cel.Functions(
+		// 	&functions.Overload{
+		// 		Operator: "string_split_string_list_string",
+		// 		Binary:   l.split,
+		// 	},
+		// ),
 		cel.Functions(
 			&functions.Overload{
 				Operator: "string_split_after_string_list_string",
@@ -510,12 +497,12 @@ func (l stringLib) ProgramOptions() []cel.ProgramOption {
 				Function: l.splitN,
 			},
 		),
-		cel.Functions(
-			&functions.Overload{
-				Operator: "string_substring_int_int_string",
-				Function: l.substring,
-			},
-		),
+		// cel.Functions(
+		// 	&functions.Overload{
+		// 		Operator: "string_substring_int_int_string",
+		// 		Function: l.substring,
+		// 	},
+		// ),
 		cel.Functions(
 			&functions.Overload{
 				Operator: "string_to_lower_string",
@@ -701,17 +688,17 @@ func (l stringLib) indexAny(arg0, arg1 ref.Val) ref.Val {
 	return types.DefaultTypeAdapter.NativeToValue(strings.IndexAny(string(s), string(chars)))
 }
 
-func (l stringLib) join(arg0, arg1 ref.Val) ref.Val {
-	elems, err := arg0.ConvertToNative(reflectStringSliceType)
-	if err != nil {
-		return types.NewErr("no such overload for index_any")
-	}
-	sep, ok := arg1.(types.String)
-	if !ok {
-		return types.ValOrErr(sep, "no such overload for index_any")
-	}
-	return types.DefaultTypeAdapter.NativeToValue(strings.Join(elems.([]string), string(sep)))
-}
+// func (l stringLib) join(arg0, arg1 ref.Val) ref.Val {
+// 	elems, err := arg0.ConvertToNative(reflectStringSliceType)
+// 	if err != nil {
+// 		return types.NewErr("no such overload for index_any")
+// 	}
+// 	sep, ok := arg1.(types.String)
+// 	if !ok {
+// 		return types.ValOrErr(sep, "no such overload for index_any")
+// 	}
+// 	return types.DefaultTypeAdapter.NativeToValue(strings.Join(elems.([]string), string(sep)))
+// }
 
 func (l stringLib) lastIndex(arg0, arg1 ref.Val) ref.Val {
 	s, ok := arg0.(types.String)
@@ -749,28 +736,28 @@ func (l stringLib) repeat(arg0, arg1 ref.Val) ref.Val {
 	return types.DefaultTypeAdapter.NativeToValue(strings.Repeat(string(s), int(chars)))
 }
 
-func (l stringLib) replace(args ...ref.Val) ref.Val {
-	if len(args) != 4 {
-		return types.NewErr("no such overload for replace")
-	}
-	s, ok := args[0].(types.String)
-	if !ok {
-		return types.ValOrErr(s, "no such overload for replace")
-	}
-	old, ok := args[1].(types.String)
-	if !ok {
-		return types.ValOrErr(old, "no such overload for replace")
-	}
-	new, ok := args[2].(types.String)
-	if !ok {
-		return types.ValOrErr(old, "no such overload for replace")
-	}
-	n, ok := args[3].(types.Int)
-	if !ok {
-		return types.ValOrErr(n, "no such overload for replace")
-	}
-	return types.DefaultTypeAdapter.NativeToValue(strings.Replace(string(s), string(old), string(new), int(n)))
-}
+// func (l stringLib) replace(args ...ref.Val) ref.Val {
+// 	if len(args) != 4 {
+// 		return types.NewErr("no such overload for replace")
+// 	}
+// 	s, ok := args[0].(types.String)
+// 	if !ok {
+// 		return types.ValOrErr(s, "no such overload for replace")
+// 	}
+// 	old, ok := args[1].(types.String)
+// 	if !ok {
+// 		return types.ValOrErr(old, "no such overload for replace")
+// 	}
+// 	new, ok := args[2].(types.String)
+// 	if !ok {
+// 		return types.ValOrErr(old, "no such overload for replace")
+// 	}
+// 	n, ok := args[3].(types.Int)
+// 	if !ok {
+// 		return types.ValOrErr(n, "no such overload for replace")
+// 	}
+// 	return types.DefaultTypeAdapter.NativeToValue(strings.Replace(string(s), string(old), string(new), int(n)))
+// }
 
 func (l stringLib) replaceAll(args ...ref.Val) ref.Val {
 	if len(args) != 3 {
